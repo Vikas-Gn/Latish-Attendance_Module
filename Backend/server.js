@@ -55,7 +55,7 @@ app.post('/api/punch', async (req, res) => {
     try {
         // Get the latest record for the employee
         const latestRecord = await pool.query(
-            'SELECT status, timestamp FROM punch_records WHERE employee_id = $1 AND date = CURRENT_DATE ORDER BY timestamp DESC LIMIT 1',
+            'SELECT status, timestamp FROM punch_records WHERE employee_id = $1 AND date::date = CURRENT_DATE ORDER BY timestamp DESC LIMIT 1',
             [employeeId]
         );
 

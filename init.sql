@@ -3,7 +3,7 @@ CREATE TABLE punch_records (
     employee_id VARCHAR(7) NOT NULL,
     status VARCHAR(3) NOT NULL CHECK (status IN ('in', 'out')),
     timestamp VARCHAR(20) NOT NULL,
-    date VARCHAR(20) NOT NULL,
+    date DATE NOT NULL,
     hours_worked FLOAT,
     attendance_status VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

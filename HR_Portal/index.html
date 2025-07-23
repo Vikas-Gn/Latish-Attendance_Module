@@ -646,11 +646,15 @@ function calculateDuration(inTime, outTime) {
 
 // Format hours worked for view details to always show hours and minutes
 function formatHoursWorkedForDetails(hoursWorked) {
+    if (typeof hoursWorked !== 'string') {
+        hoursWorked = String(hoursWorked ?? '');  // handle null/undefined too
+    }
+
     if (hoursWorked === 'N/A' || hoursWorked === '0h 0m 0s' || hoursWorked === 'NaN') {
         return '0h 0m';
     }
 
-    // Extract hours and minutes using a more robust method
+    // Try matching format like "5h 30m"
     const matches = hoursWorked.match(/(\d+)h\s*(\d+)m/);
     if (matches) {
         const hours = parseInt(matches[1], 10) || 0;
